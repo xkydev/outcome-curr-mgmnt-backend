@@ -8,8 +8,8 @@ WORKDIR /app
 COPY pom.xml .
 RUN mvn dependency:go-offline
 
-# Copy the source code
-COPY src ./src
+# Copy all the source code
+COPY . .
 
 # Package the application
 RUN mvn clean package -DskipTests
@@ -24,7 +24,7 @@ WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 
 # Expose the port the application runs on
-EXPOSE 8080
+EXPOSE 8090
 
 # Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
