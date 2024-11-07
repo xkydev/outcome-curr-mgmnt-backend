@@ -20,7 +20,7 @@ WORKDIR /app
 COPY --from=build /app/outcome-curr-mgmt/target/*.jar app.jar
 
 # Expose the port the application runs on
-EXPOSE 8090
+EXPOSE 8181
 
 # Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
